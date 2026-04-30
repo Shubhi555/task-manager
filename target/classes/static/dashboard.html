@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskManager - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>📋 TaskManager</h1>
+        <div class="nav-right">
+            <span id="user-name"></span>
+            <span id="user-role" class="role-badge"></span>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button class="sidebar-btn active" onclick="showSection('dashboard')">🏠 Dashboard</button>
+            <button class="sidebar-btn" onclick="showSection('projects')">📁 Projects</button>
+            <button class="sidebar-btn" onclick="showSection('mytasks')">✅ My Tasks</button>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Dashboard Section -->
+            <div id="section-dashboard">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="stat-total">0</h3>
+                        <p>Total Tasks</p>
+                    </div>
+                    <div class="stat-card todo">
+                        <h3 id="stat-todo">0</h3>
+                        <p>To Do</p>
+                    </div>
+                    <div class="stat-card progress">
+                        <h3 id="stat-progress">0</h3>
+                        <p>In Progress</p>
+                    </div>
+                    <div class="stat-card done">
+                        <h3 id="stat-done">0</h3>
+                        <p>Done</p>
+                    </div>
+                    <div class="stat-card overdue">
+                        <h3 id="stat-overdue">0</h3>
+                        <p>Overdue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div id="section-projects" style="display:none">
+                <div class="section-header">
+                    <h2>Projects</h2>
+                    <button class="btn-primary" onclick="showCreateProject()">+ New Project</button>
+                </div>
+
+                <!-- Create Project Form -->
+                <div id="create-project-form" style="display:none" class="form-card">
+                    <h3>Create New Project</h3>
+                    <input type="text" id="project-name" placeholder="Project Name" />
+                    <input type="text" id="project-desc" placeholder="Description" />
+                    <div class="form-buttons">
+                        <button class="btn-primary" onclick="createProject()">Create</button>
+                        <button class="btn-secondary" onclick="hideCreateProject()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="projects-list"></div>
+            </div>
+
+            <!-- My Tasks Section -->
+            <div id="section-mytasks" style="display:none">
+                <h2>My Tasks</h2>
+                <div id="mytasks-list"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="task-modal" class="modal" style="display:none">
+        <div class="modal-content">
+            <h3>Create New Task</h3>
+            <input type="text" id="task-title" placeholder="Task Title" />
+            <textarea id="task-desc" placeholder="Description"></textarea>
+            <select id="task-priority">
+                <option value="LOW">Low Priority</option>
+                <option value="MEDIUM" selected>Medium Priority</option>
+                <option value="HIGH">High Priority</option>
+            </select>
+            <input type="datetime-local" id="task-due" />
+            <input type="number" id="task-assignee" placeholder="Assignee User ID (optional)" />
+            <input type="hidden" id="task-project-id" />
+            <div class="form-buttons">
+                <button class="btn-primary" onclick="createTask()">Create Task</button>
+                <button class="btn-secondary" onclick="closeTaskModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

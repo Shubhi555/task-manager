@@ -1,0 +1,44 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskManager - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1>📋 TaskManager</h1>
+            <p class="subtitle">Manage your team's work efficiently</p>
+
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="showTab('login')">Login</button>
+                <button class="tab-btn" onclick="showTab('signup')">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form">
+                <input type="email" id="login-email" placeholder="Email" />
+                <input type="password" id="login-password" placeholder="Password" />
+                <button class="btn-primary" onclick="login()">Login</button>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" style="display:none">
+                <input type="text" id="signup-name" placeholder="Full Name" />
+                <input type="email" id="signup-email" placeholder="Email" />
+                <input type="password" id="signup-password" placeholder="Password" />
+                <select id="signup-role">
+                    <option value="MEMBER">Member</option>
+                    <option value="ADMIN">Admin</option>
+                </select>
+                <button class="btn-primary" onclick="signup()">Sign Up</button>
+            </div>
+
+            <div id="auth-error" class="error-msg"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
